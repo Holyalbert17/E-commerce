@@ -1,0 +1,6 @@
+@Datamex.ECommerce.Api_HostAddress = http://localhost:5198
+
+GET {{Datamex.ECommerce.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

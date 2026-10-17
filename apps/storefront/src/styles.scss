@@ -1,0 +1,433 @@
+/* Casa Imperial storefront — retail profesional */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --dx-red: #c62828;
+  --dx-red-dark: #8e0000;
+  --dx-red-soft: #ffebee;
+  --dx-secondary: #8e0000;
+  --dx-ink: #141414;
+  --dx-ink-soft: #555;
+  --dx-mute: #8a8a8a;
+  --dx-muted: var(--dx-mute);
+  --dx-line: #e8e8e8;
+  --dx-bg: #f4f4f5;
+  --dx-surface: #ffffff;
+  --dx-price: #c62828;
+  --dx-ok: #1b5e20;
+  --dx-warn: #b71c1c;
+  --dx-focus: #1565c0;
+  --dx-radius: 12px;
+  --dx-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 10px 28px rgba(0, 0, 0, 0.06);
+  --dx-font: 'Source Sans 3', system-ui, sans-serif;
+  --dx-display: 'Outfit', 'Source Sans 3', sans-serif;
+  --dx-font-display: var(--dx-display);
+  --dx-pad: clamp(1.5rem, 5.5vw, 3.25rem);
+  --dx-max: min(100% - (var(--dx-pad) * 2), 1240px);
+  --dx-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  --dx-card-pad: clamp(0.9rem, 1.4vw, 1.15rem);
+  --dx-fs: clamp(15px, 0.35vw + 14px, 17px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--dx-bg);
+  color: var(--dx-ink);
+  font-family: var(--dx-font);
+  font-size: var(--dx-fs);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  max-width: 100%;
+  background-image:
+    radial-gradient(ellipse 90% 45% at 50% -15%, rgba(198, 40, 40, 0.07), transparent),
+    linear-gradient(180deg, #fafafa 0%, var(--dx-bg) 35%);
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
+a:not(.dx-btn):not(.hit) {
+  color: var(--dx-red);
+}
+
+a:not(.dx-btn):not(.hit):hover {
+  color: var(--dx-red-dark);
+}
+
+/* Resultados del buscador: no deben heredar el rojo de links. */
+a.hit,
+a.hit:hover,
+a.hit:focus-visible {
+  color: var(--dx-ink);
+  text-decoration: none;
+}
+
+a.hit:hover,
+a.hit:focus-visible {
+  background: #f3f4f6;
+}
+
+a.hit .title {
+  color: var(--dx-ink);
+}
+
+a.hit .spec {
+  color: var(--dx-mute);
+}
+
+a.hit .prices .now {
+  color: var(--dx-price, var(--dx-red));
+}
+
+:focus-visible {
+  outline: 3px solid var(--dx-focus);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: 0.75rem 1rem;
+  background: var(--dx-ink);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: var(--dx-pad);
+  top: var(--dx-pad);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dx-container {
+  width: var(--dx-max);
+  max-width: var(--dx-max);
+  margin-inline: auto;
+  padding-inline: 0;
+  box-sizing: border-box;
+}
+
+.dx-section-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--dx-display);
+  font-size: clamp(1.25rem, 1.5vw + 0.9rem, 1.65rem);
+  letter-spacing: -0.02em;
+}
+
+.dx-section-sub {
+  margin: 0 0 1.15rem;
+  color: var(--dx-ink-soft);
+  max-width: 48ch;
+}
+
+.dx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--dx-red);
+  color: #fff !important;
+  font-family: var(--dx-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.dx-btn:hover {
+  /* color-mix evita fondo claro si --dx-red-dark quedó mal seteado por branding */
+  background: color-mix(in srgb, var(--dx-red) 72%, #000);
+  color: #fff !important;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--dx-red) 35%, transparent);
+  transform: translateY(-1px);
+}
+
+.dx-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--dx-red) 55%, #000);
+  outline-offset: 2px;
+}
+
+.dx-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--dx-red) 28%, transparent);
+}
+
+.dx-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.dx-btn--ghost {
+  background: transparent;
+  color: var(--dx-ink) !important;
+  border: 1px solid var(--dx-line);
+}
+
+.dx-btn--ghost:hover {
+  border-color: var(--dx-red);
+  color: var(--dx-red) !important;
+  background: var(--dx-red-soft);
+  box-shadow: none;
+}
+
+.dx-btn--lg {
+  min-height: 48px;
+  padding-inline: 1.4rem;
+}
+
+.dx-input,
+.dx-select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--dx-line);
+  border-radius: 10px;
+  background: var(--dx-surface);
+  color: var(--dx-ink);
+  font: inherit;
+}
+
+.dx-input:focus,
+.dx-select:focus {
+  border-color: var(--dx-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.14);
+  outline: none;
+}
+
+.dx-alert {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.dx-alert--error {
+  background: #fdecea;
+  border-color: #f5c2c0;
+  color: var(--dx-warn);
+}
+
+.dx-alert--ok {
+  background: #e8f5e9;
+  border-color: #c8e6c9;
+  color: var(--dx-ok);
+}
+
+/* Product card system — cómodo en cualquier ancho */
+.dx-product-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr));
+}
+
+@media (min-width: 720px) {
+  .dx-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .dx-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .dx-product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .dx-product-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.dx-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--dx-surface);
+  border: 1px solid var(--dx-line);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dx-card:hover,
+.dx-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #f0b4b4;
+  box-shadow: var(--dx-shadow);
+}
+
+.dx-card__media {
+  aspect-ratio: 1;
+  background: #f7f7f8 center/contain no-repeat;
+  border-bottom: 1px solid var(--dx-line);
+  position: relative;
+}
+
+.dx-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--dx-card-pad);
+  flex: 1;
+}
+
+.dx-card__brand {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-mute);
+}
+
+.dx-card__title {
+  margin: 0;
+  font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.05rem);
+  font-weight: 600;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+.dx-card__price {
+  margin-top: auto;
+  padding-top: 0.55rem;
+  font-family: var(--dx-display);
+  font-size: clamp(1.15rem, 0.6vw + 1rem, 1.35rem);
+  font-weight: 800;
+  color: var(--dx-price);
+}
+
+.dx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.dx-badge--ok {
+  background: #e8f5e9;
+  color: var(--dx-ok);
+}
+
+.dx-badge--out {
+  background: #fdecea;
+  color: var(--dx-warn);
+}
+
+.dx-badge--promo {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  background: var(--dx-red);
+  color: #fff;
+}
+
+/* Pins Leaflet (checkout + sucursales) */
+.dx-map-pin {
+  background: transparent !important;
+  border: none !important;
+}
+.dx-map-pin__dot {
+  display: block;
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+  border-radius: 50% 50% 50% 0;
+  background: var(--pin, #c62828);
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  border: 2px solid #fff;
+}
+.dx-map-pin__dot::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.leaflet-container {
+  font: inherit;
+  border-radius: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,40 @@
+# Compilados y caches
+bin/
+obj/
+artifacts/
+.run/
+_run-api*/
+node_modules/
+dist/
+.angular/
+*.user
+*.suo
+.vs/
+.idea/
+
+# Datos locales
+App_Data/
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# Secretos: la copia real queda en la maquina. En el repo van los *.Example.json
+src/Datamex.ECommerce.Api/appsettings.json
+src/Datamex.ECommerce.Api/appsettings.Development.json
+src/Datamex.ECommerce.Api/appsettings.Production.json
+**/appsettings.*.local.json
+.env
+.env.*
+!.env.example
+
+# Publicaciones y temporales de deploy
+tools/deploy/_staging/
+tools/_tmp_*/
+tools/_admin-smoke-test.json
+tools/**/_out-run/
+erp-sync-*.log
+erp-sync-publish-path.txt
+*.dll
+*.exe
+*.pdb
